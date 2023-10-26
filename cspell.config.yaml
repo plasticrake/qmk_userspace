@@ -1,0 +1,15 @@
+version: "0.2"
+ignorePaths: []
+dictionaryDefinitions:
+  - name: "project-words"
+    path: "./project-words.txt"
+    description: "Words used in this project"
+    addWords: True
+dictionaries:
+  - cpp
+  - makefile
+  - project-words
+words: []
+ignoreWords: []
+import: []
+allowCompoundWords: True

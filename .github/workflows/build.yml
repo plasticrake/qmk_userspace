@@ -1,0 +1,46 @@
+name: Build QMK firmware
+on:
+  push:
+    paths-ignore:
+      - "**.md"
+      - "**.py"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
+    strategy:
+      fail-fast: false
+      matrix:
+        file:
+          - gmmk-pro-rev1-ansi.json
+          - keychron-q1v2-ansi_encoder.json
+
+    steps:
+      - name: Disable git safe directory checks
+        run: git config --global --add safe.directory '*'
+
+      - name: Checkout QMK
+        uses: actions/checkout@v3
+        with:
+          repository: qmk/qmk_firmware
+          submodules: recursive
+
+      - name: Checkout userspace
+        uses: actions/checkout@v3
+        with:
+          path: users/${{ github.actor }}
+
+      - name: Build firmware
+        run: qmk compile -j $(($(nproc) + 1)) "users/${{ github.actor }}/keymaps/${{ matrix.file }}"
+
+      - name: Archive firmware
+        uses: actions/upload-artifact@v3
+        continue-on-error: true
+        with:
+          name: ${{ matrix.file }}_${{ github.actor }}
+          path: |
+            *.hex
+            *.bin
+            *.uf2

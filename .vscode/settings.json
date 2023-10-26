@@ -1,0 +1,20 @@
+// Synced with QMK project settings 2023-10-29
+{
+  // Unofficially, QMK uses spaces for indentation
+  "editor.insertSpaces": true,
+  // Configure glob patterns for excluding files and folders.
+  "files.exclude": {
+    "**/.build": true,
+    "**/*.hex": true,
+    "**/*.bin": true,
+    "**/*.uf2": true
+  },
+  "[markdown]": {
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+  "clangd.arguments": ["--header-insertion=never"]
+}

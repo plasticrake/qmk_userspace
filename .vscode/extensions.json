@@ -1,0 +1,11 @@
+// Suggested extensions
+{
+  "recommendations": [
+    "bierner.github-markdown-preview",
+    "donjayamanne.git-extension-pack",
+    "editorconfig.editorconfig",
+    "llvm-vs-code-extensions.vscode-clangd",
+    "streetsidesoftware.code-spell-checker",
+    "xaver.clang-format"
+  ]
+}
