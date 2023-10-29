@@ -26,6 +26,7 @@ MSEL
 MSTP
 MYCM
 noeeprom
+PAUS
 PGDN
 PGUP
 plasticrake
